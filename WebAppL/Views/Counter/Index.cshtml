@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewData["Title"] = "Counter";
+}
+
+<h1>+ & - Counter </h1>
+
+<form asp-controller="Counter" asp-action="Count" method="post">
+    <label for="Text">Enter Text</label>
+    <input type="text" name="Text" id="Text"><br>
+    <button type="submit">Check</button>
+</form>
+
+<p> + Amount: @ViewBag.Pluses </p>
+<p> - Amount: @ViewBag.Minuses </p>
+<p> + & - Amount: @ViewBag.Both </p>
+<p> Letters Amount: @ViewBag.Letters </p>
+

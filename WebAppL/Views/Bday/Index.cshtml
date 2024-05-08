@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewData["Title"] = "Birthday";
+}
+
+<h1>Birthday</h1>
+
+<form asp-controller="Bday" asp-action="CompareDates" method="post">
+    <fieldset>
+        <legend>Date input</legend>
+        <div>
+            <label for="date1">Bday date 1:</label>
+            <input type="datetime-local" name="FirstDate" />
+        </div>
+        <div>
+            <label for="date2">Bday date 2:</label>
+            <input type="datetime-local" name="SecondDate" />
+        </div>
+        <div>
+            <label>&nbsp;</label>
+            <input type="submit" value="Send" />
+        </div>
+    </fieldset>
+</form>
+
+<p> @ViewBag.Bday </p>
