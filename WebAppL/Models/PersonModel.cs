@@ -13,7 +13,8 @@ namespace WebAppL.Models
         public string Name { get; set; }
 
         [RegularExpression("^[А-ЯЁ][а-яё]+$", ErrorMessage = "Введите корректное имя.")]
-        public string MidName { get; set; } // не всем завезли бывает
+        public string? MidName { get; set; }
+        // не всем завезли, бывает
 
         [Required(ErrorMessage = "Поле 'Группа' обязательно для заполнения.")]
         [RegularExpression("^М[0-9-]+$", ErrorMessage = "Введите корректную группу.")]
@@ -27,26 +28,5 @@ namespace WebAppL.Models
         [EmailAddress(ErrorMessage = "Введите корректный адрес электронной почты.")]
         public string Email { get; set; }
 
-        public PersonModel Create(string Фамилия, string Имя, string Отчество, string Группа, string Телефон, string Email)
-        {
-            PersonModel person = new PersonModel();
-            person.Surname = Фамилия;
-            person.Name = Имя;
-            person.MidName = Отчество;
-            person.Group = Группа;
-            person.TelNum = Телефон;
-            person.Email = Email;
-
-            return person;
-        }
     }
 }
-
-///
-/// Крч почему-то не записываются данные в переменные класса и во ViewBag
-/// Кроме почты она всегда прокает и почему-то только она
-/// возможно рофл с валидацией
-/// Мысль поместить в VB всех человеков
-/// И потом их от туда в список толкать
-/// Но возможно так оно не работает 
-///
