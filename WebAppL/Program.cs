@@ -7,6 +7,11 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddControllers();
 builder.Services.AddSingleton<IListService, ListService>();
 
+builder.Services.AddMvc().AddViewOptions(options =>
+{
+    options.HtmlHelperOptions.ClientValidationEnabled = true;
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

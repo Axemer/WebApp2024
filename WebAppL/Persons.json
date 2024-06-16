@@ -8,27 +8,19 @@
     "Email": "alexa@mvx.com"
   },
   {
-    "Name": "ААА",
-    "Surname": "АА",
-    "MidName": "А",
-    "Group": "180",
-    "TelNum": "+7(777)777-77-77",
-    "Email": "ААА@ya.com"
-  },
-  {
-    "Name": "ААА",
-    "Surname": "ААААААА",
-    "MidName": null,
-    "Group": "180",
-    "TelNum": "+7(777)777-77-77",
-    "Email": "ААА@ya.com"
-  },
-  {
-    "Name": "ААА",
-    "Surname": "ААААААА",
-    "MidName": null,
+    "Name": "Андрей",
+    "Surname": "Андреев",
+    "MidName": "Андреевич",
     "Group": "571-2",
     "TelNum": "+7(777)777-77-77",
-    "Email": "ААА@ya.com"
+    "Email": "aaa@ya.com"
+  },
+  {
+    "Name": "Полина",
+    "Surname": "Антонова",
+    "MidName": null,
+    "Group": "123",
+    "TelNum": "+7(777)777-77-77",
+    "Email": "ap@ya.com"
   }
 ]

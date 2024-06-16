@@ -1,7 +1,6 @@
 ﻿using WebAppL.Models;
 using System.Collections.Generic;
 using System.IO;
-//using System.Text.Json;
 using Newtonsoft.Json;
 
 namespace WebAppL.Service
@@ -56,7 +55,6 @@ namespace WebAppL.Service
             {
                 Console.WriteLine($"Ошибка при создании JSON файла: {ex.Message}");
             }
-
         }
 
         public void CreateJson(string filePath)
@@ -71,7 +69,6 @@ namespace WebAppL.Service
                 TelNum = "87678787878",
                 Email = "alexa@mvx.com"
             });
-
             Save();
         }
 

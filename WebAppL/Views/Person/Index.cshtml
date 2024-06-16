@@ -28,40 +28,40 @@
         <form asp-action="Create" asp-controller="Person">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="@Model.Surname" class="control-label">Фамилия</label>
-                <input asp-for="@Model.Surname" type="text" name="Surname" class="form-control" required> </input>
-                <span asp-validation-for="@Model.Surname" class="text-danger"></span>
+                <label asp-for="Surname" class="control-label">Фамилия</label>
+                <input asp-for="Surname" type="text" class="form-control" required>
+                <span asp-validation-for="Surname" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="@Model.Name" class="control-label">Имя</label>
-                <input asp-for="@Model.Name" type="text" name="name" class="form-control" required /></input>
-                <span asp-validation-for="@Model.Name" class="text-danger"></span>
+                <label asp-for="Name" class="control-label">Имя</label>
+                <input asp-for="Name" type="text" class="form-control" required>
+                <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="@Model.MidName" class="control-label">Отчество</label>
-                <input asp-for="@Model.MidName" type="text" name="midname" class="form-control" ></input>
-                <span asp-validation-for="@Model.MidName" class="text-danger"></span>
+                <label asp-for="MidName" class="control-label">Отчество</label>
+                <input asp-for="MidName" type="text" class="form-control">
+                <span asp-validation-for="MidName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="@Model.Group" class="control-label">Группа</label>
-                <input asp-for="@Model.Group" type="text" name="group" class="form-control" required></input>
-                <span asp-validation-for="@Model.Group" class="text-danger"></span>
+                <label asp-for="Group" class="control-label">Группа</label>
+                <input asp-for="Group" type="text" class="form-control" required>
+                <span asp-validation-for="Group" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="@Model.TelNum" class="control-label">Номер телефона</label>
-                <input type="text" asp-for="TelNum" class="form-control required"></input>
-                <span asp-validation-for="@Model.TelNum" class="text-danger"></span>
+                <label asp-for="TelNum" class="control-label">Номер телефона</label>
+                <input asp-for="TelNum" type="text" class="form-control" required>
+                <span asp-validation-for="TelNum" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="@Model.Email" class="control-label">Электронная почта</label>
-                <input asp-for="@Model.Email" type="text" name="email" class="form-control" required></input>
-                <span asp-validation-for="@Model.Email" class="text-danger"></span>
+                <label asp-for="Email" class="control-label">Электронная почта</label>
+                <input asp-for="Email" type="text" class="form-control" required>
+                <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <button type="submit">ADD</button>
             </div>
-            
         </form>
+
 
         
        
@@ -101,6 +101,12 @@
                         </tbody>
                 </table>
                 }
+            }
+
+            @section Scripts {
+            @{
+                await Html.RenderPartialAsync("_ValidationScriptsPartial");
+            }
             }
     </div>
 </div>
