@@ -4,60 +4,86 @@ using WebAppL.Service;
 
 namespace WebAppL.Controllers
 {
-    public class PersonController : Controller
+    public class PersonController(IListService listService) : Controller
     {
-        private PersonModel person = new PersonModel();
-        private List<PersonModel> PersonList { get; set; } = new List<PersonModel>();
-        private Group Group { get; set; } = new Group();
-
-        //private readonly ListService _listService;
+        private readonly IListService _listService = listService;
+        //private readonly PersonModel _personModel;
 
         public IActionResult Index()
         {
-            Group.Persons.Add(new PersonModel
-            {
-                Surname = "Гринев",
-                Name = "Алексей",
-                MidName = "Ярославович",
-                Group = "571-2",
-                TelNum = "87678787878",
-                Email = "alexa@mvx.com"
-            });
-            
+            var items = _listService.GetAll();
+            ViewBag.PersonList = items;
+            return View();
+        }
 
-            ViewBag.PersonList = Group.Persons;
-            return View(person);
-
-            //var items = _listService.GetAll();
-            //return View(items);
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return RedirectToAction(nameof(Index)); 
         }
 
         [HttpPost]
-        public IActionResult Create(PersonModel NewPerson)
+        public IActionResult Create(PersonModel item)
         {
+            PersonModel person = item;
+
             // Проверяем, что ученик с такими же данными не существует в этой группе
-            if (PersonList.Any(s => s.Group == NewPerson.Group && s.Surname == NewPerson.Surname && s.Name == NewPerson.Name && s.MidName == NewPerson.MidName))
+            if (_listService.GetAll().Any(s => s.Group == item.Group && s.Surname == item.Surname && s.Name == item.Name && s.MidName == item.MidName))
             {
                 ModelState.AddModelError("", "Ученик с такими же данными уже существует в этой группе.");
-                //return View(person);
+                return RedirectToAction(nameof(Index));
             }
 
-            // Валидируем данные ученика
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                PersonList.Add(NewPerson);
-                //return View(NewPerson); 
-                ViewBag.PersonList = PersonList;
-                //return RedirectToAction("Index"); 
+                _listService.Add(item);
+                return RedirectToAction(nameof(Index));
             }
+            
+            return RedirectToAction(nameof(Index));
 
-           
-            return RedirectToAction("Index");
+            //return View("Index");
         }
-
     }
 }
 
+//[HttpPost]
+//public IActionResult Create(PersonModel NewPerson)
+//{
+//    // Проверяем, что ученик с такими же данными не существует в этой группе
+//    if (PersonList.Any(s => s.Group == NewPerson.Group && s.Surname == NewPerson.Surname && s.Name == NewPerson.Name && s.MidName == NewPerson.MidName))
+//    {
+//        ModelState.AddModelError("", "Ученик с такими же данными уже существует в этой группе.");
+//        //return View(person);
+//    }
+//    // Валидируем данные ученика
+//    if (ModelState.IsValid)
+//    {
+//        PersonList.Add(NewPerson);
+//        //return View(NewPerson); 
+//        ViewBag.PersonList = PersonList;
+//        //return RedirectToAction("Index"); 
+//    }
+//    return RedirectToAction("Index");
+//}
+
+//private PersonModel person = new PersonModel();
+//private List<PersonModel> PersonList { get; set; } = new List<PersonModel>();
+//private Group Group { get; set; } = new Group();
+
+//Group.Persons.Add(new PersonModel
+//{
+//    Surname = "Гринев",
+//    Name = "Алексей",
+//    MidName = "Ярославович",
+//    Group = "571-2",
+//    TelNum = "87678787878",
+//    Email = "alexa@mvx.com"
+//});
+
+
+//ViewBag.PersonList = Group.Persons;
+//return View(person);
 
 //Group.Persons.Add(new PersonModel
 //{

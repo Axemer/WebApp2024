@@ -1,8 +1,11 @@
+using WebAppL.Service;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddControllers();
+builder.Services.AddSingleton<IListService, ListService>();
 
 var app = builder.Build();
 

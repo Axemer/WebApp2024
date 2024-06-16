@@ -23,40 +23,38 @@
 
 <h1>Person</h1>
 
-<hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create" asp-controller="Person">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label class="control-label">Фамилия</label>
-                <input type="text" name="Surname" class="form-control"></input>
-
+                <label asp-for="@Model.Surname" class="control-label">Фамилия</label>
+                <input asp-for="@Model.Surname" type="text" name="Surname" class="form-control" required> </input>
                 <span asp-validation-for="@Model.Surname" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="@Model.Name" class="control-label">Имя</label>
-                <input type="text" name="name" class="form-control" /></input>
+                <input asp-for="@Model.Name" type="text" name="name" class="form-control" required /></input>
                 <span asp-validation-for="@Model.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="@Model.MidName" class="control-label">Отчество</label>
-                <input type="text" name="midname" class="form-control"></input>
+                <input asp-for="@Model.MidName" type="text" name="midname" class="form-control" ></input>
                 <span asp-validation-for="@Model.MidName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="@Model.Group" class="control-label">Группа</label>
-                <input type="text" name="group" class="form-control"></input>
+                <input asp-for="@Model.Group" type="text" name="group" class="form-control" required></input>
                 <span asp-validation-for="@Model.Group" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="@Model.TelNum" class="control-label">Номер телефона</label>
-                <input type="text" name="num" class="form-control"></input>
+                <input type="text" asp-for="TelNum" class="form-control required"></input>
                 <span asp-validation-for="@Model.TelNum" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="@Model.Email" class="control-label">Электронная почта</label>
-                <input type="text" name="email" class="form-control"></input>
+                <input asp-for="@Model.Email" type="text" name="email" class="form-control" required></input>
                 <span asp-validation-for="@Model.Email" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -64,67 +62,45 @@
             </div>
             
         </form>
-       
-        <h1>Народ</h1>
-            <h3>Группа </h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th> Фамилия </th>
-                        <th> Имя </th>
-                        <th> Отчество </th>
-                        <th> Группа </th>
-                        <th> Телефон </th>
-                        <th> E-mail </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var student in ViewBag.PersonList)
-                    {
-                    <tr>
-                            <td> @student.Surname  </td>
-                            <td> @student.Name  </td>
-                            <td> @student.MidName  </td>
-                            <td> @student.Group  </td>
-                            <td> @student.TelNum  </td>
-                            <td> @student.Email  </td>
-                    </tr>
-                    }
-                </tbody>
-            </table>
-        
-        @* <table class="table">
-            <thead>
-                <tr>
-                    <th>Фамилия</th>
-                    <th>Имя</th>
-                    <th>Отчество</th>
-                    <th>Группа</th>
-                    <th>Телефон</th>
-                    <th>E-mail</th>
-                </tr>
-            </thead>
-            @if(Model.PersonList != null)
-            {
-                <tbody>
-                    @foreach (var Person in Model.PersonList)
-                    {
-                        <tr>
-                            <td>@Person.Name </td>
-                            <td>@Person.Surname </td>
-                            <td>@Person.MidName </td>
-                            <td>@Person.Group </td>
-                            <td>@Person.TelNum </td>
-                            <td>@Person.Email </td>
 
-                        </tr>
-                    }
-                </tbody> *@
-         
-           
+        
+       
+        <h1>-</h1>
+            @{ var i = "";}
+            @foreach (var item in ViewBag.PersonList)
+            {
+                if(item.Group != i)
+                {
+                    i = item.Group;
+                    <h3>Группа: @item.Group</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th> Фамилия </th>
+                                <th> Имя </th>
+                                <th> Отчество </th>
+                                <th> Телефон </th>
+                                <th> E-mail </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var student in ViewBag.PersonList)
+                            {
+                                if (student.Group == item.Group)
+                                {
+                                    <tr>
+                                        <td> @student.Surname  </td>
+                                        <td> @student.Name  </td>
+                                        <td> @student.MidName  </td>
+                                        <td> @student.TelNum  </td>
+                                        <td> @student.Email  </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                </table>
+                }
+            }
     </div>
 </div>
-
-@* <div>
-    <a asp-action="Index">Back to List</a>
-</div> *@

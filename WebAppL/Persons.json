@@ -1,0 +1,34 @@
+[
+  {
+    "Name": "Алексей",
+    "Surname": "Гринев",
+    "MidName": "Ярославович",
+    "Group": "571-2",
+    "TelNum": "+7(767)878-78-78",
+    "Email": "alexa@mvx.com"
+  },
+  {
+    "Name": "ААА",
+    "Surname": "АА",
+    "MidName": "А",
+    "Group": "180",
+    "TelNum": "+7(777)777-77-77",
+    "Email": "ААА@ya.com"
+  },
+  {
+    "Name": "ААА",
+    "Surname": "ААААААА",
+    "MidName": null,
+    "Group": "180",
+    "TelNum": "+7(777)777-77-77",
+    "Email": "ААА@ya.com"
+  },
+  {
+    "Name": "ААА",
+    "Surname": "ААААААА",
+    "MidName": null,
+    "Group": "571-2",
+    "TelNum": "+7(777)777-77-77",
+    "Email": "ААА@ya.com"
+  }
+]
